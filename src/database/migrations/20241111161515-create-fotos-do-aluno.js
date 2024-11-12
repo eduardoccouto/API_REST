@@ -21,18 +21,17 @@ module.exports = {
         allowNull: false,
       },
       aluno_id: {
-        type: Sequelize.STRING,
-        allowNull: false,
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        defaultValue: null,
         references: {
           model: 'alunos',
           key: 'id',
-
         },
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
 
       },
-
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
