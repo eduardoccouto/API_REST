@@ -1,5 +1,5 @@
 import Sequelize, { Model } from "sequelize";
-
+import fotoUrl from '../config/appConfig';
 export default class Foto extends Model {
   static init(sequelize) {
     super.init(
@@ -9,7 +9,7 @@ export default class Foto extends Model {
           type: Sequelize.STRING,
           defaultValue: '',
           validate: {
-            notEmpty:{
+            notEmpty: {
               msg: "Campo nao pode ficar vazio"
             }
           }
@@ -20,12 +20,18 @@ export default class Foto extends Model {
           defaultValue: '',
 
           validate: {
-              notEmpty:{
-                msg: "Campo nao pode ficar vazio"
-              }
+            notEmpty: {
+              msg: "Campo nao pode ficar vazio"
             }
+          }
 
 
+        },
+        url: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return `${fotoUrl.url}/images/${this.getDataValue('filename')}`
+          }
         }
       },
       {
@@ -36,7 +42,7 @@ export default class Foto extends Model {
 
   }
 
-  static associate(models){
-    this.belongsTo(models.Aluno, { foreignKey: 'aluno_id'});
+  static associate(models) {
+    this.belongsTo(models.Aluno, { foreignKey: 'aluno_id' });
   }
 }

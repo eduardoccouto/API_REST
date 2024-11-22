@@ -43,9 +43,9 @@ export default class Aluno extends Model {
           type: Sequelize.FLOAT,
           defaultValue: '',
           validate: {
-           isFloat: {
-            msg: 'Valor não float'
-           }
+            isFloat: {
+              msg: 'Valor não float'
+            }
           }
 
         },
@@ -53,7 +53,7 @@ export default class Aluno extends Model {
           type: Sequelize.FLOAT,
           defaultValue: '',
           validate: {
-            isFloat:{
+            isFloat: {
               msg: 'Valor não float'
             },
           }
@@ -66,5 +66,10 @@ export default class Aluno extends Model {
       });
     return this;
 
+  }
+
+
+  static associate(model) {
+    this.hasMany(model.Foto, { foreignKey: 'aluno_id' });
   }
 }

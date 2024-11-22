@@ -1,11 +1,20 @@
 import Aluno from '../models/Aluno';
+import Foto from '../models/Foto';
+
 
 
 class alunoController {
   async index(req, res) {
 
 
-    const alunos = await Aluno.findAll();
+    const alunos = await Aluno.findAll({
+      attributes: ['id', 'nome', 'email', 'idade', 'peso', 'altura'],
+      order: [['id', 'DESC'],[Foto, 'id', 'DESC']],
+      include: {
+        model: Foto,
+        attributes: ['url','filename'],
+      }
+    });
 
 
     res.json(alunos);
@@ -37,7 +46,14 @@ class alunoController {
         erros: ['Missing ID'],
       });
 
-      const aluno = await Aluno.findByPk(id);
+      const aluno = await Aluno.findByPk(id, {
+        attributes: ['id', 'nome', 'email', 'idade', 'peso', 'altura'],
+        order: [['id', 'DESC'],[Foto, 'id', 'DESC']],
+        include: {
+          model: Foto,
+          attributes: ['url', 'filename'],
+        }
+      });
 
       if (!aluno) return res.status(400).json({
         erros: ['Aluno not find'],
