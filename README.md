@@ -10,14 +10,6 @@ Este é um pequeno projeto de API REST desenvolvido com **Express** para control
 - **ESLint**: Ferramenta para análise estática e padronização do código JavaScript.
 - **Maria DB**: Banco de dados para armazenar as informações dos alunos (se necessário, pode ser substituído por outro banco de dados).
 
-## Instalação
 
-1. Clone este repositório:
-
-   ```bash
-   git clone https://github.com/seu-usuario/API_REST.git
-2. Configure o arquivo .env.
-3. Instale as dependencias (npm i)
-4. Comece o servidor na porta local 3000 (npm run dev).
 
 API desenvolvida seguindo as instruções e material da seção 13 do curso Javascript e TypeScript - front-end e back-end (Full Stack) - Node, Express, noSQL, React, hooks, Redux, Design Patterns.
